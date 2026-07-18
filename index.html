@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="extra.css" />
 </head>
 <body>
   <div class="noise"></div>
@@ -16,7 +17,10 @@
     <div class="seed-control"><span>SEED</span><input id="seedInput" value="742091" inputmode="numeric" maxlength="10"><button id="newSeed" class="icon-btn" title="New seed">↻</button></div>
     <div class="top-actions"><button id="saveBtn" class="utility">SAVE RUN</button><button id="resetBtn" class="utility">NEW LIFE</button></div>
   </header>
-  <main class="app-shell">
+  <section id="titleScreen" class="screen title-screen"><div class="title-mark">✦</div><p class="kicker">A SEEDED LIFE SIMULATION</p><h1>AWAKENING</h1><p class="title-sub">A SUPERPOWERED LIFE</p><div class="title-actions"><button id="titleNew" class="primary-action">NEW LIFE <span>→</span></button><button id="titleContinue" class="secondary-action">CONTINUE <small id="continueHint"></small></button></div><p class="title-note">Every choice leaves a mark. Every life ends.</p></section>
+  <section id="seedScreen" class="screen seed-screen hidden"><div class="seed-card"><p class="kicker">INITIALIZE YOUR TIMELINE</p><h2>Choose a seed.</h2><p>Every name, street, power and crisis is generated from this string. Share it to share the possibility of a life.</p><label>SEED STRING<input id="startSeed" maxlength="20" placeholder="enter any word or number"><span id="hashedSeed"></span></label><div><button id="randomStart" class="secondary-action">RANDOMIZE</button><button id="beginLife" class="primary-action">BIRTH CERTIFICATE →</button></div></div></section>
+  <section id="birthScreen" class="screen birth-screen hidden"><div class="birth-card"><p class="kicker">BIRTH CERTIFICATE // SUBJECT INITIALIZED</p><h2 id="birthName">—</h2><p id="birthBlurb">A life is waiting to be lived.</p><div id="birthStats" class="birth-stats"></div><button id="acceptBirth" class="primary-action">ACCEPT THIS LIFE →</button><button id="rerollBirth" class="secondary-action">REROLL</button></div></section>
+  <main id="gameShell" class="app-shell hidden">
     <aside class="sidebar panel">
       <div class="life-label"><span class="pulse"></span> LIFE IN PROGRESS</div>
       <section class="identity">
@@ -42,6 +46,7 @@
     <aside class="log-panel panel"><div class="log-title"><span>FIELD LOG</span><span class="live-dot">● LIVE</span></div><div id="log" class="log"></div><div class="legend"><span><i class="dot cyan"></i> YOUR PATH</span><span><i class="dot orange"></i> EVENT</span></div></aside>
   </main>
   <div id="eventModal" class="modal hidden"><div class="modal-card"><div class="modal-top"><span id="eventType">EVENT // 01</span><span id="eventFate">FATE +0</span></div><div class="event-art" id="eventArt">✦</div><p class="kicker" id="eventKicker">A MOMENT IN TIME</p><h2 id="eventTitle">—</h2><p id="eventText">—</p><div id="choices" class="choices"></div><div id="outcome" class="outcome hidden"></div><button id="continueBtn" class="continue hidden">CONTINUE STORY <span>→</span></button></div></div>
+  <section id="deathScreen" class="screen death-screen hidden"><div class="death-card"><p class="kicker">FINAL TRANSMISSION // LIFE COMPLETE</p><div class="death-symbol">✦</div><h2 id="deathTitle">THE STORY ENDS</h2><p id="deathText">—</p><div id="deathStats" class="birth-stats"></div><p class="share-seed">SEED <b id="deathSeed">—</b></p><button id="sameSeed" class="primary-action">REPLAY THIS SEED →</button><button id="newLifeDeath" class="secondary-action">NEW LIFE</button></div></section>
   <div id="toast" class="toast"></div>
   <script type="module" src="js/main.js"></script>
 </body>
